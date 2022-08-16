@@ -2,10 +2,10 @@
   <div class="container-fluid">
     <div class="row">
       <div class="col">
-        <button type="button" class="btn btn-outline-secondary mb-5">Back</button>
+        <router-link to="/products" type="button" class="btn btn-outline-secondary mb-5">Back</router-link>
       </div>
       <div class="col">
-          <router-link to="`/cart" type="button" class="btn btn-outline-secondary mb-5"> <span>  item </span>View cart</router-link> 
+          <router-link to="/cart" type="button" class="btn btn-outline-secondary mb-5"> <span>  item </span>View cart</router-link> 
       </div>
     </div>
   </div>
