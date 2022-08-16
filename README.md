@@ -1,4 +1,7 @@
 # onlineshop
+```
+https://fakeshop13.netlify.app/
+```
 
 ## Project setup
 ```
