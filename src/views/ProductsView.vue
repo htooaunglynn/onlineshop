@@ -6,9 +6,7 @@
           <img :src="item.image" class="card-img-top" :alt="item.title">
           <div class="card-body">
             <h5 class="card-title fs-4 fw-bold" v-html="capitalize(item.title)"> </h5>
-            
               <router-link :to="`/product/${item.id}`" class="btn btn-primary">Details</router-link>
-            
           </div>
         </div>
       </div>

@@ -29,7 +29,7 @@
                   <button class="btn btn-outline-secondary" type="button" @click="incre">+</button>
                   <button class="btn btn-outline-secondary" type="button" @click="decre">-</button>
                   <input type="text" v-model="qty" class="form-control text-center" placeholder="Qty" aria-label="Recipient's username" aria-describedby="button-addon2">
-                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="addtoCart">Add to Cart</button>
+                  <button class="btn btn-outline-secondary" type="button" id="button-addon2" @click="addtoCart(products)">Add to Cart</button>
                 </div>
               </div>
             </div>
@@ -46,14 +46,7 @@ export default {
   name: 'ProductView',
   data() {
     return {
-      products: {},
-      cart: {
-        id: Number,
-        name: String,
-        price: Number,
-        qty: Number,
-        total: Number,
-      },
+      products: [],
       qty: 1,
       total: 0
     }
@@ -69,18 +62,34 @@ export default {
         this.products = response.data
       })
     },
-    addtoCart() {     
-      this.total = this.qty * this.products.price
-      // console.log(this.total);
+    addtoCart(products) {     
+      let collection_item;
+      let status = false;
+      let cart = localStorage.getItem('storageItem');
 
-      this.cart.id = this.products.id;
-      this.cart.name = this.products.title
-      this.cart.price = this.products.price;
-      this.cart.qty = this.qty;
-      this.cart.total = this.total;
-      // console.log(this.cart)
+      if(!cart) {
+        collection_item = new Array;
+      } else {
+        collection_item = JSON.parse(cart);
+      }
 
-      localStorage.setItem('storedData', JSON.stringify(this.cart))
+      products.qty = this.qty;
+      //products.total = this.qty * products.price;
+
+      for(let item of collection_item) {
+        if(item.id == products.id) {
+          item.qty += products.qty
+          status = true;
+          return false;
+        }
+      }
+
+      if(status == false) {
+        collection_item.push(products);
+      }
+
+      products.total = products.qty * products.price
+      localStorage.setItem('storageItem', JSON.stringify(collection_item))
     },
     incre() {
       return ++this.qty;

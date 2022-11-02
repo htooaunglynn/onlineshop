@@ -83,9 +83,17 @@
                       <router-link :to="`/product/${item.id}`" class="btn btn-primary">Details</router-link>
                     </div>
                   </div>
+                  <!-- <div class="card">
+                    <img :src="item.image" class="card-img-top" alt="...">
+                    <div class="card-body">
+                      <h5 class="card-title">{{ item.title }}</h5>
+                      <p class="card-text">{{ item.description }}</p>
+                      <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p> 
+                    </div> -->
+                  </div>
                 </div>
               </div>
-            </div>
+            </div> 
             <!-- all  -->
             <!-- Men's clothing  -->
             <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
@@ -156,7 +164,6 @@
         <!-- j  -->
       
     </div>
-   </div>
    <!-- behavior  -->
 </template>
 
